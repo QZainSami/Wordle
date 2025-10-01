@@ -8,7 +8,7 @@
 #include <cstdlib>
 #include <ctime>
 
-const int MAX_WORDS = 50;
+const int MAX_WORDS = 500;
 const int MAX_ATTEMPTS = 6;
 
 class Wordle {

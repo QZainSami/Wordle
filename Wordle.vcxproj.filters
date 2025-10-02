@@ -35,8 +35,14 @@
     <ClInclude Include="colors.h">
       <Filter>Header Files</Filter>
     </ClInclude>
+    <ClInclude Include="config.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="Project_Proposal.md" />
+  </ItemGroup>
+  <ItemGroup>
+    <Text Include="bestscore.txt" />
   </ItemGroup>
 </Project>

@@ -2,11 +2,10 @@
 #ifndef GUESSLIST_H
 #define GUESSLIST_H
 
+#include "config.h"
 #include <iostream>
 #include <cstring>
 using namespace std;
-
-const int WORD_LEN = 5;
 
 struct Node {
     char guess[WORD_LEN + 1];
@@ -22,6 +21,7 @@ public:
     GuessList();
     void addGuess(const char g[]);
     void displayGuesses();
+	void clear();
     ~GuessList();
 };
 

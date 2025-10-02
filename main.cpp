@@ -4,7 +4,7 @@
 using namespace std;
 
 void howToPlay() {
-    cout << "\n" << YELLOW << "📘 HOW TO PLAY WORDLE" << RESET << "\n";
+    cout << "\n" << YELLOW << "== HOW TO PLAY WORDLE ==" << RESET << "\n";
     cout << "1. Guess a 5-letter word within 6 attempts.\n";
     cout << "2. " << GREEN << "Green" << RESET << " = correct letter in correct position.\n";
     cout << "3. " << YELLOW << "Yellow" << RESET << " = correct letter but wrong position.\n";
@@ -22,7 +22,20 @@ int main() {
         int choice; cin >> choice;
 
         if (choice == 1) {
+            // Choose difficulty
+            cout << "\nSelect Difficulty:\n";
+            cout << "1. Easy (common words)\n";
+            cout << "2. Medium (slightly tricky)\n";
+            cout << "3. Hard (rare words)\n";
+            int diffChoice; cin >> diffChoice;
+
+            if (diffChoice < 1 || diffChoice > 3) {
+                cout << RED << "Invalid difficulty! Defaulting to Easy.\n" << RESET;
+                diffChoice = 1;
+            }
+
             Wordle game;
+            game.resetGame(static_cast<Difficulty>(diffChoice));
             game.play();
 
             cout << "\nDo you want to play again? (y/n): ";
@@ -30,9 +43,15 @@ int main() {
             if (again == 'y' || again == 'Y') continue;
             else break;
         }
-        else if (choice == 2) howToPlay();
-        else if (choice == 3) break;
-        else cout << RED << "Invalid option!" << RESET << endl;
+        else if (choice == 2) {
+            howToPlay();
+        }
+        else if (choice == 3) {
+            break;
+        }
+        else {
+            cout << RED << "Invalid option!" << RESET << endl;
+        }
     }
     cout << "\nThanks for playing Wordle! Goodbye.\n";
     return 0;

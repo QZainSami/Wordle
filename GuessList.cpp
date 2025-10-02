@@ -3,7 +3,7 @@
 
 // Node constructor
 Node::Node(const char g[]) {
-    strcpy_s(guess, g);
+    strcpy_s(guess, WORD_LEN + 1, g);
     next = nullptr;
 }
 
@@ -34,6 +34,16 @@ void GuessList::displayGuesses() {
         cout << attempt++ << ": " << current->guess << endl;
         current = current->next;
     }
+}
+
+void GuessList::clear() {
+    Node* current = head;
+    while (current) {
+        Node* temp = current;
+        current = current->next;
+        delete temp;
+    }
+    head = tail = nullptr;
 }
 
 // Destructor

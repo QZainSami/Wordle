@@ -128,17 +128,26 @@ void Wordle::play() {
         char guess[WORD_LEN + 1];
         cout << "\n<3 Lives left: " << (MAX_ATTEMPTS - attempt + 1) << endl;
         cout << "Attempt " << attempt << ": ";
-        cin >> guess;
+        
+        string input;
+        if (!(cin >> input)) {
+            // handle EOF / input error gracefully
+            cout << RED << "Input error." << RESET << endl;
+            return;
+        }
 
-        if (strcmp(guess, "hint") == 0) {
+        if (input == "hint") {
             giveHint();
             attempt--; continue;
         }
 
-        if (strlen(guess) != WORD_LEN) {
+        if (input.length() != WORD_LEN) {
             cout << RED << "Word must be " << WORD_LEN << " letters long!" << RESET << endl;
             attempt--; continue;
         }
+
+        // copy safely into fixed-size buffer (length already validated)
+        strcpy_s(guess, WORD_LEN + 1, input.c_str());
 
         guesses.addGuess(guess);
         checkGuess(guess);

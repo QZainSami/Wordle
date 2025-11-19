@@ -7,5 +7,6 @@
 #define GRAY    "\033[1;30m"
 #define RESET   "\033[0m"
 #define RED     "\033[1;31m"
+#define BLUE    "\033[1;34m"
 
 #endif
